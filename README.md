@@ -46,7 +46,7 @@ Cyclops Bot utilizes a custom printed circuit board (PCB) designed to consolidat
 - **Common Ground Line** (Tying external power GND to ESP32 GND via PCB plane)
 
 ### Controller
-- **Xbox Series X/S Wireless Controller** (Updated with standard BLE firmware)
+- **Xbox Series X/S Wireless Controller** (Updated with standard BLE firmware, non-controller option available)
 
 ---
 
@@ -58,14 +58,14 @@ Cyclops Bot utilizes a custom printed circuit board (PCB) designed to consolidat
 
 | PCB Servo Header | Target Motor | ESP32 GPIO Pin | Motion Limits (Min / Attention / Max) | Control Trigger/Button |
 | :--- | :--- | :--- | :--- | :--- |
-| **H1** | Motor 1 | **GPIO 13** | 90.0° / 135.0° / 180.0° | Hold **RT** (Right Trigger) |
-| **H2** | Motor 2 | **GPIO 12** | 0.0° / 45.0° / 90.0° | Hold **RB** (Right Bumper) |
-| **H3** | Motor 3 | **GPIO 27** | 0.0° / 45.0° / 90.0° | Hold **LT** (Left Trigger) |
-| **H4** | Motor 4 | **GPIO 14** | 90.0° / 135.0° / 180.0° | Hold **LB** (Left Bumper) |
-| **H5** | Motor 5 | **GPIO 26** | 0.0° / 90.0° / 180.0° | Expansion Channel |
-| **H6** | Motor 6 | **GPIO 25** | 0.0° / 90.0° / 180.0° | Expansion Channel |
-| **H7** | Motor 7 | **GPIO 33** | 0.0° / 90.0° / 180.0° | Expansion Channel |
-| **H8** | Motor 8 | **GPIO 32** | 0.0° / 90.0° / 180.0° | Expansion Channel |
+| **H1** | Motor 1 | **GPIO 13** |  
+| **H2** | Motor 2 | **GPIO 12** | 
+| **H3** | Motor 3 | **GPIO 27** | 
+| **H4** | Motor 4 | **GPIO 14** | 
+| **H5** | Motor 5 | **GPIO 26** |
+| **H6** | Motor 6 | **GPIO 25** |
+| **H7** | Motor 7 | **GPIO 33** | 
+| **H8** | Motor 8 | **GPIO 32** |
 
 ### OLED Display Pin Assignments (I2C)
 
@@ -77,6 +77,19 @@ Cyclops Bot utilizes a custom printed circuit board (PCB) designed to consolidat
 | **SCL** | **GPIO 22** |
 
 ---
+## Xbox Controller Mappings
+
+| Control Input | Action / Motion |
+| :--- | :--- |
+| **Left Joystick (Forward)** | Move Forward |
+| **Left Joystick (Backwards)** | Move Backwards |
+| **Left Joystick (Left / Right)** | Move Sideways |
+| **Hold RT (Right Trigger)** | Rotate Front Right |
+| **Hold RB (Right Bumper)** | Rotate Back Right |
+| **Hold LT (Left Trigger)** | Rotate Front Left |
+| **Hold LB (Left Bumper)** | Rotate Back Left |
+| **Button A** | Attention Stance |
+| **Button X** | Wave Gesture |
 
 ## Setup & Installation Instructions
 
