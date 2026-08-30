@@ -1,5 +1,6 @@
-# cyclopsbot
-ESP32-powered robot controlled via Xbox Controller with OLED screen and 8 servos.
+# Cyclops Bot
+
+An ESP32-powered robotics project controlled via Bluetooth Low Energy (BLE) using an Xbox Series X/S controller. Cyclops Bot features dynamic multi-servo continuous sweeping controls, an I2C OLED display with custom animated face graphics, and a modular PCB pin architecture.
 
 ---
 
@@ -11,8 +12,24 @@ Cyclops Bot interfaces an ESP32 microcontroller with an Xbox Series X/S controll
 - **BLE Wireless Control:** Connects natively to Xbox Series X/S controllers without dongles.
 - **Smooth Sweep Engine:** Uses non-blocking position updates (SWEEP_SPEED = 1.0) to provide smooth, continuous servo sweeps.
 - **Multi-Servo Support:** Drives up to 8 independent servos with preset angle bounds and default stances.
+- **Dedicated Custom PCB:** Integrates power regulation, signal breakout headers, and I2C lines directly on a custom carrier board.
 - **Expressive OLED Interface:** Displays an animated robot face on an I2C SSD1306 display.
 - **Non-blocking Execution:** Employs FreeRTOS task delays (vTaskDelay) to preserve system cycles for background Bluetooth execution and prevent Watchdog Timer (WDT) resets.
+
+---
+
+## Hardware Architecture & Custom PCB
+
+Cyclops Bot utilizes a custom printed circuit board (PCB) designed to consolidate component connections, isolate heavy motor current loads, and eliminate loose jumper wiring.
+
+<Image src="image_agent_tag_13410528183373737947" alt="ESP32 hardware control board layout showing terminal blocks and micro-controller integration" caption="Custom PCB board layout for peripheral and power routing" />
+
+### PCB Hardware Specifications
+- **Microcontroller Socket:** Dual female header rails designed to fit standard 30-pin ESP32 Dev Module footprint.
+- **Servo Header Rail (H1–H8):** 8 sets of 3-pin male headers (GND, VCC, Signal) wired directly to dedicated ESP32 GPIOs.
+- **Power Separation Plane:** Isolated high-current 5V bus powering the servo headers separately from the ESP32 logic power rail.
+- **Display Terminal:** 4-pin I2C breakout header providing 3.3V/5V, GND, SDA (GPIO 21), and SCL (GPIO 22).
+- **Filtering Capacitors:** On-board decoupling capacitors across the servo power rail to absorb transient voltage dips and prevent brownout resets during peak motor draws.
 
 ---
 
@@ -20,12 +37,13 @@ Cyclops Bot interfaces an ESP32 microcontroller with an Xbox Series X/S controll
 
 ### Microcontroller & Display
 - **ESP32 Development Board** (e.g., ESP32 Dev Module)
+- **Cyclops Bot Custom PCB**
 - **0.96" SSD1306 OLED Display** (128x64 pixels, I2C interface)
 
 ### Actuators & Power
 - **8x Micro Servos** (e.g., SG90, MG90S, or similar 5V servos)
 - **External 5V DC Power Supply** (Minimum 3A recommended to handle servo stall currents)
-- **Common Ground Line** (Tying external power GND to ESP32 GND)
+- **Common Ground Line** (Tying external power GND to ESP32 GND via PCB plane)
 
 ### Controller
 - **Xbox Series X/S Wireless Controller** (Updated with standard BLE firmware)
@@ -34,11 +52,11 @@ Cyclops Bot interfaces an ESP32 microcontroller with an Xbox Series X/S controll
 
 ## Wiring & Pin Mapping
 
-> **Important:** Never power 8 servos directly from the ESP32's 3.3V or 5V pins. Always use an external 5V power supply to power the servo VCC/GND lines and share a common ground with the ESP32.
+> **Important:** Never power 8 servos directly from the ESP32's 3.3V or 5V pins. Always route the external 5V power supply to the PCB's main power screw terminal or power jack.
 
 ### Servo Pin Assignments
 
-| Servo Header | Target Motor | ESP32 GPIO Pin | Motion Limits (Min / Attention / Max) | Control Trigger/Button |
+| PCB Servo Header | Target Motor | ESP32 GPIO Pin | Motion Limits (Min / Attention / Max) | Control Trigger/Button |
 | :--- | :--- | :--- | :--- | :--- |
 | **H1** | Motor 1 | **GPIO 13** | 90.0° / 135.0° / 180.0° | Hold **RT** (Right Trigger) |
 | **H2** | Motor 2 | **GPIO 12** | 0.0° / 45.0° / 90.0° | Hold **RB** (Right Bumper) |
@@ -49,12 +67,12 @@ Cyclops Bot interfaces an ESP32 microcontroller with an Xbox Series X/S controll
 | **H7** | Motor 7 | **GPIO 33** | 0.0° / 90.0° / 180.0° | Expansion Channel |
 | **H8** | Motor 8 | **GPIO 32** | 0.0° / 90.0° / 180.0° | Expansion Channel |
 
-### OLED Display Wiring (I2C)
+### OLED Display Pin Assignments (I2C)
 
-| SSD1306 Pin | ESP32 GPIO Pin |
+| SSD1306 Pin | PCB Header / ESP32 GPIO Pin |
 | :--- | :--- |
-| **VCC** | 3.3V / 5V |
-| **GND** | GND |
+| **VCC** | 3.3V / 5V Rail |
+| **GND** | Common GND Plane |
 | **SDA** | **GPIO 21** |
 | **SCL** | **GPIO 22** |
 
