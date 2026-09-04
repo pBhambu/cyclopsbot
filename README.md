@@ -1,6 +1,6 @@
 # Cyclops Bot
 
-An ESP32-powered robotics project controlled via Bluetooth Low Energy (BLE) using an Xbox Series X/S controller. Cyclops Bot features dynamic multi-servo continuous sweeping controls, an I2C OLED display with custom animated face graphics, and a modular PCB pin architecture.
+An ESP32-powered robotics project controlled via Bluetooth Low Energy (BLE) using an Xbox Series X/S controller. Cyclops Bot features multi-servo continuous sweeping controls, an OLED display with custom animated face graphics, and dedicated PCB pin architecture.
 
 ---
 
@@ -10,11 +10,10 @@ Cyclops Bot interfaces an ESP32 microcontroller with an Xbox Series X/S controll
 
 ### Key Features
 - **BLE Wireless Control:** Connects natively to Xbox Series X/S controllers without dongles.
-- **Smooth Sweep Engine:** Uses non-blocking position updates (SWEEP_SPEED = 1.0) to provide smooth, continuous servo sweeps.
+- **Smooth Sweep Engine:** Uses non-blocking position updates to provide smooth, continuous servo sweeps.
 - **Multi-Servo Support:** Drives up to 8 independent servos with preset angle bounds and default stances.
 - **Dedicated Custom PCB:** Integrates power regulation, signal breakout headers, and I2C lines directly on a custom carrier board.
 - **Expressive OLED Interface:** Displays an animated robot face on an I2C SSD1306 display.
-- **Non-blocking Execution:** Employs FreeRTOS task delays (vTaskDelay) to preserve system cycles for background Bluetooth execution and prevent Watchdog Timer (WDT) resets.
 
 ---
 
@@ -88,8 +87,8 @@ Cyclops Bot utilizes a custom printed circuit board (PCB) designed to consolidat
 | **Hold RB (Right Bumper)** | Rotate Back Right |
 | **Hold LT (Left Trigger)** | Rotate Front Left |
 | **Hold LB (Left Bumper)** | Rotate Back Left |
-| **Button A** | Attention Stance |
-| **Button X** | Wave Gesture |
+| **Button A** | Attention Stance/wave|
+| **Button B** | Sleep animation |
 
 ## Setup & Installation Instructions
 
@@ -106,7 +105,7 @@ Open the **Library Manager** in Arduino IDE (`Tools` -> `Manage Libraries...`) a
 
 ### 3. Board & IDE Settings
 Select your board configuration under **Tools**:
-- **Board:** ESP32 Dev Module
+- **Board:** ESP32 Dev Module or similar
 - **Partition Scheme:** Huge APP (3MB No OTA/1MB SPIFFS) *(Required for BLE stack compilation)*
 - **Upload Speed:** 115200
 
