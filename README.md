@@ -57,7 +57,7 @@ Cyclops Bot utilizes a custom printed circuit board (PCB) designed to consolidat
 ### Servo Pin Assignments
 
 | PCB Servo Header | Target Motor | ESP32 GPIO Pin | Motion Limits (Min / Attention / Max) | Control Trigger/Button |
-| :--- | :--- | :--- | 
+| :--- | :--- | :--- | :--- | 
 | **H1** | Motor 1 | **GPIO 13** |  
 | **H2** | Motor 2 | **GPIO 12** | 
 | **H3** | Motor 3 | **GPIO 27** | 
