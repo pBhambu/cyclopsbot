@@ -12,11 +12,11 @@ WARNING: THE STL FILES FOR THE COVER AND LEGS ARE OUTDATED AND DO NOT WORK. FIXE
 Cyclops Bot interfaces an ESP32 microcontroller with an Xbox Series X/S controller over BLE using the XboxSeriesXControllerESP32_asukiaaa library. It translates controller inputs (triggers, bumpers, and buttons) into smooth position updates across 8 independent servo channels while maintaining an expressive OLED display interface.
 
 ### Key Features
-- **BLE Wireless Control:** Connects natively to Xbox Series X/S controllers without dongles.
+- **BLE Wireless Control:** Connects to Xbox Series X/S controllers without dongles.
 - **Smooth Sweep Engine:** Uses non-blocking position updates to provide smooth, continuous servo sweeps.
 - **Multi-Servo Support:** Drives up to 8 independent servos with preset angle bounds and default stances.
 - **Dedicated Custom PCB:** Integrates power regulation, signal breakout headers, and I2C lines directly on a custom carrier board.
-- **Expressive OLED Interface:** Displays an animated robot face on an I2C SSD1306 display.
+- **Expressive OLED Interface:** Displays an animated eye on an I2C SSD1306 display.
 
 ---
 
@@ -27,11 +27,10 @@ Cyclops Bot utilizes a custom printed circuit board (PCB) designed to consolidat
 <img width="832" height="1320" alt="pcbpic" src="https://github.com/user-attachments/assets/9e0f97da-663b-4e6c-9f2e-1ac2a3c901a3" />
 
 ### PCB Hardware Specifications
-- **Microcontroller Socket:** Dual female header rails designed to fit standard 30-pin ESP32 Dev Module footprint.
+- **Microcontroller Socket:** Dual header pins designed to fit standard 30-pin ESP32 Dev Module footprint.
 - **Servo Header Rail (H1–H8):** 8 sets of 3-pin male headers (GND, VCC, Signal) wired directly to dedicated ESP32 GPIOs.
 - **Power Separation Plane:** Isolated high-current 5V bus powering the servo headers separately from the ESP32 logic power rail.
 - **Display Terminal:** 4-pin I2C breakout header providing 3.3V/5V, GND, SDA (GPIO 21), and SCL (GPIO 22).
-- **Filtering Capacitors:** On-board decoupling capacitors across the servo power rail to absorb transient voltage dips and prevent brownout resets during peak motor draws.
 
 ---
 
@@ -39,13 +38,12 @@ Cyclops Bot utilizes a custom printed circuit board (PCB) designed to consolidat
 
 ### Microcontroller & Display
 - **ESP32 Development Board** (e.g., ESP32 Dev Module)
-- **Cyclops Bot Custom PCB**
+- **Cyclops Bot Custom PCB**  (or breadboard/protoboard with wires)
 - **0.96" SSD1306 OLED Display** (128x64 pixels, I2C interface)
 
 ### Actuators & Power
 - **8x Micro Servos** (e.g., SG90, MG90S, or similar 5V servos)
 - **External 5V DC Power Supply** (Minimum 3A recommended to handle servo stall currents)
-- **Common Ground Line** (Tying external power GND to ESP32 GND via PCB plane)
 
 ### Controller
 - **Xbox Series X/S Wireless Controller** (Updated with standard BLE firmware, non-controller option available)
@@ -109,7 +107,6 @@ Open the **Library Manager** in Arduino IDE (`Tools` -> `Manage Libraries...`) a
 ### 3. Board & IDE Settings
 Select your board configuration under **Tools**:
 - **Board:** ESP32 Dev Module or similar
-- **Partition Scheme:** Huge APP (3MB No OTA/1MB SPIFFS) *(Required for BLE stack compilation)*
 - **Upload Speed:** 115200
 
 ### 4. Upload & Pairing Procedure
