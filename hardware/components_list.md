@@ -5,7 +5,7 @@ This document details the complete hardware component list required to build and
 ---
 
 ## Component List
-
+For best quality and the shortest shipping time, Amazon is the best option. If you are willing to wait longer for shipping, use AliExpress or another trustworthy seller.
 | Component | Category | Quantity | Notes |
 | :--- | :--- | :--- | :--- |
 | **ESP32 Microcontroller** | Microcontroller | 1 | ESP32 Dev Module or compatible board |
