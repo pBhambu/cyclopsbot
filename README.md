@@ -25,7 +25,7 @@ Cyclops Bot interfaces an ESP32 microcontroller with an Xbox Series X/S controll
 
 Cyclops Bot utilizes a custom printed circuit board (PCB) designed to consolidate component connections, isolate heavy motor current loads, and eliminate loose jumper wiring.
 
-<img width="832" height="1320" alt="pcbpic" src="https://github.com/user-attachments/assets/9e0f97da-663b-4e6c-9f2e-1ac2a3c901a3" />
+<img width="400" height="900" alt="pcbpic" src="https://github.com/user-attachments/assets/9e0f97da-663b-4e6c-9f2e-1ac2a3c901a3" />
 
 ### PCB Hardware Specifications
 - **Microcontroller Socket:** Dual header pins designed to fit standard 30-pin ESP32 Dev Module footprint.
