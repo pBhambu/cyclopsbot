@@ -2,6 +2,7 @@
 
 An ESP32-powered robotics project controlled via Bluetooth Low Energy (BLE) using an Xbox Series X/S controller. Cyclops Bot features multi-servo continuous sweeping controls, an OLED display with custom animated face graphics, and dedicated PCB pin architecture.
 
+<img width="5367" height="2858" alt="IMG_9572" src="https://github.com/user-attachments/assets/c894f3e6-53af-4820-a7a2-5cd473787ac4" />
 <img width="560" height="305" alt="robotthumnail" src="https://github.com/user-attachments/assets/2063e0c7-9cde-47d5-9581-109b3df1b614" />
 
 ---
