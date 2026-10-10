@@ -8,8 +8,6 @@ An ESP32-powered robotics project controlled via Bluetooth Low Energy (BLE) usin
 ---
 
 ## Overview
-WARNING: THE STL FILES FOR THE COVER AND LEGS ARE OUTDATED AND DO NOT WORK. FIXED VERSIONS WILL BE UPDATED SOON
-
 Cyclops Bot uses an ESP32 microcontroller with an Xbox Series X/S controller over BLE using the XboxSeriesXControllerESP32_asukiaaa library. It translates controller inputs (triggers, bumpers, and buttons) into smooth position updates across 8 independent servo channels while maintaining an expressive OLED display interface.
 
 ### Key Features
