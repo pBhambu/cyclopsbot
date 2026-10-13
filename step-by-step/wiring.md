@@ -9,20 +9,18 @@ To prevent ESP32 brownouts and screen resets caused by high current spikes from 
 * **High-Current Rail:** Servos draw power directly from a regulated DC-DC buck converter.
 * **Logic Rail:** The ESP32 and OLED display share power safely alongside the control signals, ensuring a common ground across all components.
 
-### Pin Mapping Reference
+### Servo Pin Mapping Reference
 
-| Component / Function | ESP32 GPIO Pin | Description |
+| Component / Function | PCB Pin | Description |
 | :--- | :--- | :--- |
-| **Servo R1** | GPIO 13 | Front Right Hip |
-| **Servo R2** | GPIO 12 | Back Right Hip |
-| **Servo L1** | GPIO 27 | Front Left Hip |
-| **Servo L2** | GPIO 14 | Back Left Hip |
-| **Servo R3** | GPIO 26 | Front Right Lift |
-| **Servo R4** | GPIO 25 | Back Right Lift |
-| **Servo L3** | GPIO 33 | Front Left Lift |
-| **Servo L4** | GPIO 32 | Back Left Lift |
-| **OLED SDA** | GPIO 21 | I2C Data Line |
-| **OLED SCL** | GPIO 22 | I2C Clock Line |
+| **Servo R1** | H1 | Front Right Hip |
+| **Servo R2** | H2 | Back Right Hip |
+| **Servo L1** | H3 | Front Left Hip |
+| **Servo L2** | H4 | Back Left Hip |
+| **Servo R3** | H5 | Front Right Lift |
+| **Servo R4** | H6 | Back Right Lift |
+| **Servo L3** | H7 | Front Left Lift |
+| **Servo L4** | H8 | Back Left Lift |
 
 ---
 
