@@ -1,6 +1,6 @@
 Step-by-Step Wiring Instructions
 
-1. Set up the Main Power Distribution
+Set up the Main Power Distribution
   Configure your DC-DC Buck Converter (e.g., an LM2596 module) to output exactly $5.0\text{V}$.
   Connect the Negative ($-$) wire from your 2S LiPo battery ($7.4\text{V}$ nominal) to the IN$-$ of the buck converter.
   Connect the Positive ($+$) wire from the 2S LiPo to the IN$+$ of the buck converter.
