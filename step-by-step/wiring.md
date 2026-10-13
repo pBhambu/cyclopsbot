@@ -1,1 +1,48 @@
-8-Servo "Cyclops Bot" Quadruped Robot - Wiring GuideThis guide covers the power distribution, pin mapping, and step-by-step wiring instructions for the 8-servo Cyclops Bot powered by an ESP32 and a 2S LiPo battery.⚡ System Architecture & Power PrincipleTo prevent brownouts and logic resets caused by high current draw spikes from 8 servos moving simultaneously, the system uses a split-rail power design:High-Current Rail: Servos draw power directly from a stepped-down DC-DC buck converter.Logic Rail: The ESP32 and OLED display share the regulated 5V bus.Common Ground: All negative terminals (battery, buck converter, servos, ESP32, and OLED) are tied to a single shared ground reference.📌 GPIO Pin Mapping ReferenceComponent / JointServo LabelESP32 GPIO PinWire ColorFront Right HipR1GPIO 13Yellow / Orange (Signal)Back Right HipR2GPIO 12Yellow / Orange (Signal)Front Left HipL1GPIO 27Yellow / Orange (Signal)Back Left HipL2GPIO 14Yellow / Orange (Signal)Front Right LiftR3GPIO 26Yellow / Orange (Signal)Back Right LiftR4GPIO 25Yellow / Orange (Signal)Front Left LiftL3GPIO 33Yellow / Orange (Signal)Back Left LiftL4GPIO 32Yellow / Orange (Signal)OLED Display (SDA)-GPIO 21Blue / DataOLED Display (SCL)-GPIO 22Blue / Clock🛠️ Step-by-Step Wiring Instructions⚠️ CRITICAL WARNING: Double-check all polarity before connecting the battery. Reversing positive ($+$) and negative ($-$) terminals can permanently destroy your ESP32 and servos.Step 1: Set Up the Buck Converter Power RailsConnect your 2S LiPo Battery ($7.4\text{V}$ nominal) positive wire ($+$) to the IN$+$ terminal of your high-current DC-DC buck converter.Connect the LiPo negative wire ($-$) to the IN$-$ terminal of the buck converter.Adjust the buck converter output screw using a multimeter until the output reads a steady $5.0\text{V}$.Designate the converter's OUT$+$ as your Central 5V Power Rail and the OUT$-$ as your Common Ground Rail.Step 2: Wire the Servo Power & SignalsConnect all 8 servo RED wires to the Central 5V Power Rail.Connect all 8 servo BROWN/BLACK wires to the Common Ground Rail.Plug each individual servo YELLOW/ORANGE signal wire into its respective ESP32 GPIO pin as outlined in the Pin Mapping Reference table above.Step 3: Power the ESP32Connect the 5V (or Vin) pin of the ESP32 directly to the Central 5V Power Rail.Connect an ESP32 GND pin directly to the Common Ground Rail.Step 4: Wire the SSD1306 OLED DisplayConnect the OLED VCC pin to the Central 5V Power Rail.Connect the OLED GND pin to the Common Ground Rail.Connect the OLED SDA pin to GPIO 21 on the ESP32.Connect the OLED SCL pin to GPIO 22 on the ESP32.Step 5: Final Safety CheckVerify that every single module's ground pin links back to the Common Ground Rail.Inspect all solder joints and terminal block screws to ensure no stray wire strands are creating short circuits between power and ground.
+#  Wiring Guide
+
+This document outlines the power distribution, pin mapping, and step-by-step wiring instructions.
+---
+
+## Power Structure
+
+To prevent ESP32 brownouts and screen resets caused by high current spikes from the 8 micro servos, this build uses a **split-rail power design**:
+* **High-Current Rail:** Servos draw power directly from a regulated DC-DC buck converter.
+* **Logic Rail:** The ESP32 and OLED display share power safely alongside the control signals, ensuring a common ground across all components.
+
+### Pin Mapping Reference
+
+| Component / Function | ESP32 GPIO Pin | Description |
+| :--- | :--- | :--- |
+| **Servo R1** | GPIO 13 | Front Right Hip |
+| **Servo R2** | GPIO 12 | Back Right Hip |
+| **Servo L1** | GPIO 27 | Front Left Hip |
+| **Servo L2** | GPIO 14 | Back Left Hip |
+| **Servo R3** | GPIO 26 | Front Right Lift |
+| **Servo R4** | GPIO 25 | Back Right Lift |
+| **Servo L3** | GPIO 33 | Front Left Lift |
+| **Servo L4** | GPIO 32 | Back Left Lift |
+| **OLED SDA** | GPIO 21 | I2C Data Line |
+| **OLED SCL** | GPIO 22 | I2C Clock Line |
+
+---
+
+## Step-by-Step Wiring Instructions
+
+> **SAFETY WARNING:** Double-check all polarity before plugging in your battery.
+
+### 1. Set up the Main Power Distribution
+1. Configure your high-current DC-DC Buck Converter (e.g., LM2596) to output exactly **5.0V** using a multimeter before connecting any electronics.
+2. If needed, connect an XT30 pigtail to your LiPo Battery
+3. Connect the **Negative (-)** wire from your LiPo battery to the **IN-** terminal of the buck converter.
+4. Connect the **Positive (+)** wire from your LiPo battery to the **IN+** terminal of the buck converter.
+5. The **OUT+** terminal ($5\text{V}$) of the converter forms your main **Servo Power Rail**.
+6. The **OUT-** terminal forms your **System Ground Rail**.
+
+### 2. Connect the Servos
+1. 
+
+### 3. Power the ESP32 & OLED Display
+
+
+### 4. Final Verification
+* Ensure every component's Ground pin ties back to the same shared ground rail. A **Common Ground** is mandatory for proper PWM signal transmission and I2C communication.
